@@ -1,0 +1,61 @@
+
+<div *ngIf="names == null">
+  <h3>Hej och välkommen. Dig har jag inte sett förut! Vad heter du?</h3>
+  <form>
+      <label for="firstName"></label><br>
+      <input type="text" id="firstName" placeholder="First name" 
+        (keyup)="keyUpFirstName($event)"><br>
+      <label for="lastName"></label><br>
+      <input type="text" id="lastName" placeholder="Last name" (keyup)="keyUpLastName($event)" > <!--($event) skickar med värdet i event-händelsen -->
+      
+    </form>
+    <br>
+    <button (click)="saveNames()" >Lägg till</button> <!--När man klickar på knappen så ska namnen sparas  -->
+
+    <h3 *ngIf="greet">Hej {{ firstNameInput}} {{ lastNameInput }}, vad vill du ha idag?</h3>
+
+    <app-select [showFood]="greet"
+      
+      (foodSelected)="handleFoodSelected($event)"></app-select>
+    
+    
+    <p *ngIf="foodBool == true">  Du valde {{userFood}}, ett bra val! </p>
+
+
+</div>
+
+<br>
+
+<br>
+
+
+
+<!-----Efter man laddat om------------->  
+
+<div *ngIf="names"> 
+<h3>Hej igen {{names.firstname}}! Vill du ha det vanliga eller välja något nytt? </h3><br>
+
+<app-select [showFood]="true"
+
+  (foodSelected)="handleFoodSelected($event)"
+  
+  ></app-select><br>
+
+<button (click)="theUsual()" >Det vanliga</button><br>
+
+<!-- <button (click)="theUsual()" [disabled]="usual == true" >Det vanliga</button><br> -->
+
+<p *ngIf="usualIsNull">Du har inte valt någon mat sen innan.</p>
+
+<p *ngIf="foodBool == true">Okej, en {{userFood}} på väg!</p> 
+
+<p *ngIf="usual == true"> En {{userFood.food}} på väg!</p>
+
+<br><br>
+<button (click)="removeFunction()">Ta bort mig!</button>
+<p *ngIf="clearUserBool == true"> Nu är du bortglömd. Taco hej.</p>
+</div>
+
+<app-the-usual></app-the-usual>
+
+

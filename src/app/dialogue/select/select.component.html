@@ -1,0 +1,14 @@
+<br>
+<select *ngIf="showFood" id="mat"
+    (change)=chooseFood($event)>
+    <option value="tomt" selected disabled hidden>Välj här</option>
+    <option value="🍕">Pizza</option>
+    <option value="🌮">Tacos</option>
+    <option value="🍔">Hamburgare</option>
+    <option value="🥗">Sallad</option>
+  </select>
+  <br>
+  <!-- <button *ngIf="showFood" (click)="saveFood()" >Välj</button> -->
+  <br>
+
+
