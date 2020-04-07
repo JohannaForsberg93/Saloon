@@ -21,7 +21,8 @@ export class DialogueComponent implements OnInit {
   usual: boolean = false;
   clearUserBool: boolean = false;
   usualIsNull: boolean = false
-
+  foodBool2: boolean = false;
+  usualClicked: boolean = false;
 
   constructor(private storeDataService: StoreDataService) { }
 
@@ -49,17 +50,27 @@ export class DialogueComponent implements OnInit {
 
   handleFoodSelected(food) {
     this.userFood = food;
-    this.foodBool = true; 
+    this.foodBool = true;
+    this.foodBool2 = true;
+    
+    if(this.usualClicked == true) {
+      this.foodBool2 = true;
+      this.usual = false;
+    }
   }
 
   theUsual(){
+   this.usualClicked = true;
     if(this.userFood == null){ 
-
-      this.usualIsNull = true;
+      this.usualIsNull = true;//Visar att man inte valt något sen innan
+    }
+    else if(this.usualClicked == true && this.foodBool2 == true){
+      this.usual = false;
     }
     else {
       this.usual = true;
     }
+
   }
   removeFunction(){
     localStorage.removeItem("UserNames");

@@ -2,9 +2,9 @@
   <h3>Hej och välkommen. Dig har jag inte sett förut! Vad heter du?</h3>
   <form>
     <label for="firstName"></label><br>
-    <input type="text" id="firstName" placeholder="First name" (keyup)="keyUpFirstName($event)"><br>
+    <input type="text" id="firstName" placeholder="Förnamn" (keyup)="keyUpFirstName($event)"><br>
     <label for="lastName"></label><br>
-    <input type="text" id="lastName" placeholder="Last name" (keyup)="keyUpLastName($event)">
+    <input type="text" id="lastName" placeholder="Efternamn" (keyup)="keyUpLastName($event)">
 
   </form>
   <br>
@@ -28,8 +28,9 @@
   <button (click)="theUsual()">Det vanliga</button><br>
 
   <p *ngIf="usualIsNull">Du har inte valt någon mat sen innan.</p>
+  <p *ngIf="foodBool2">En ny vald {{userFood}} på väg!</p>
 
-  <p *ngIf="usual == true">Okej, en {{userFood.food}} på väg!</p>
+  <p *ngIf="usual == true"> Okej en {{userFood.food}} på väg!</p>
 
   <br><br>
   <button (click)="removeFunction()">Ta bort mig!</button>
